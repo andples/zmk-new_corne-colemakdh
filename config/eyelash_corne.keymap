@@ -78,8 +78,8 @@
         num_layer {
             display-name = "NUMBER";
             bindings = <
-&trans  &kp EXCL   &kp AT    &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
-&trans  &kp N1     &kp N2    &kp N3     &kp N4     &kp N5               &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &trans
+&kp GRAVE  &kp EXCL   &kp AT    &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
+&kp TILDE  &kp N1     &kp N2    &kp N3     &kp N4     &kp N5               &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &trans
 &trans  &kp LBKT   &kp LBRC  &kp PLUS   &kp UNDER  &kp BSLH   &trans                    &mmv MOVE_DOWN                   &kp PIPE   &kp MINUS  &kp EQUAL  &kp RBRC  &kp RBKT  &trans
                              &kp LALT   &trans     &trans                                                                &trans     &trans     &trans
             >;
