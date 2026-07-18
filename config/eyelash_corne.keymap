@@ -15,13 +15,6 @@
 
 / {
     behaviors {
-        td0: td0 {
-            compatible = "zmk,behavior-tap-dance";
-            display-name = "Shift/Caps Lock Tap Dance";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
-        };
-
         rsr_vol: rsr_vol {
             compatible = "zmk,behavior-runtime-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -37,7 +30,7 @@
         };
     };
 
-   combos {
+    combos {
         compatible = "zmk,combos";
 
         softoff {
@@ -46,40 +39,49 @@
         };
     };
 
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        fn {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "QWERTY";
+            display-name = "COLEMAK";
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T                               &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&td0       &kp A  &kp S  &kp D     &kp F  &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp SPACE              &kp DOWN              &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
+&kp TAB    &kp Q  &kp W  &kp F     &kp P  &kp B                            &kp UP                &kp J      &kp L  &kp U      &kp Y    &kp SEMI  &kp BSPC
+&kp ESC    &kp A  &kp R  &kp S     &kp T  &kp G                  &kp LEFT  &kp ENTER  &kp RIGHT  &kp M      &kp N  &kp E      &kp I    &kp O     &kp SQT
+&kp LSHFT  &kp Z  &kp X  &kp C     &kp D  &kp V      &kp SPACE             &kp DOWN              &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+                         &kp LCTRL &kp LGUI &mo 1                                                &mo 2      &kp SPACE  &kp ENTER
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
 
-        lower_layer {
+        nav_layer {
+            display-name = "NAV";
+            bindings = <
+&trans  &trans     &trans   &trans     &trans      &trans                       &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LEFT   &kp UP   &kp DOWN   &kp RIGHT   &trans           &trans      &trans      &trans      &trans  &kp H   &kp J   &kp K   &kp L   &trans
+&trans  &trans     &trans   &trans     &trans      &trans   &trans              &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+                            &trans     &trans      &trans                                               &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&rsr_vol &rsr_trans>;
+        };
+
+        num_layer {
             display-name = "NUMBER";
             bindings = <
-&trans  &kp N1           &kp N2          &kp N3        &kp N4        &kp N5                                         &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8           &kp N9           &kp N0    &kp BSPC
-&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                   &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT        &kp HOME  &kp PG_UP
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF  &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
-                                         &trans        &trans        &trans                                                                          &kp INS          &kp DEL          &trans
-            >;
-
-            sensor-bindings = <&rsr_vol &rsr_trans>;
-        };
-
-        raise_layer {
-            display-name = "SYMBOL";
-            bindings = <
-&trans  &kp EXCL      &kp AT        &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&trans  &bt BT_CLR    &mkp LCLK     &mkp MCLK  &mkp RCLK  &mkp MB4             &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&trans  &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5   &trans                    &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                    &trans     &trans     &kp SPACE                                                             &kp RET    &trans     &trans
+&trans  &kp EXCL   &kp AT    &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
+&trans  &kp N1     &kp N2    &kp N3     &kp N4     &kp N5               &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &trans
+&trans  &kp LBKT   &kp LBRC  &kp PLUS   &kp UNDER  &kp BSLH   &trans                    &mmv MOVE_DOWN                   &kp PIPE   &kp MINUS  &kp EQUAL  &kp RBRC  &kp RBKT  &trans
+                             &kp LALT   &trans     &trans                                                                &trans     &trans     &trans
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
