@@ -30,11 +30,11 @@ layers:
   - O
   - {t: '''', s: '"'}
   - $$mdi:apple-keyboard-shift$$
-  - Z
   - X
   - C
   - D
   - V
+  - Z
   - $$mdi:keyboard-space$$
   - $$mdi:arrow-down-bold$$
   - K
