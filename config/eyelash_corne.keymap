@@ -68,8 +68,7 @@
             bindings = <
 &trans  &trans     &trans   &trans     &trans      &trans                       &trans                  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &kp LEFT   &kp UP   &kp DOWN   &kp RIGHT   &trans           &trans      &trans      &trans      &trans  &kp H   &kp J   &kp K   &kp L   &trans
-&trans  &trans     &trans   &trans     &trans      &trans   &trans              &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                            &trans     &trans      &trans                                               &trans  &trans  &trans
+&kp LALT  &trans     &trans   &trans     &trans      &trans   &trans              &trans                  &trans  &trans  &trans  &trans  &trans  &kp LALT
             >;
 
             sensor-bindings = <&rsr_vol &rsr_trans>;
